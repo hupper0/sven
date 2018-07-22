@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <!-- ================ Basic Configuration ================  -->
+    <property>
+        <name>dfs.nameservices</name>
+        <value>harbinger-test</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.namenodes.harbinger-test</name>
+        <value>nn1,nn2</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.namenode.id</name>
+        <value>nn1</value>
+    </property>
+
+    <!-- ================ NameNode (nn130048) Address Configuration ================ -->
+    <property>
+        <name>dfs.namenode.rpc-address.harbinger-test.nn1</name>
+        <value>nn1.hadoop.test.harbinger.data.m.com:8020</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.harbinger-test.nn1</name>
+        <value>nn1.hadoop.test.harbinger.data.m.com:50070</value>
+    </property>
+
+    <!-- ================ NameNode (nn130052) Address Configuration ================ -->
+    <property>
+        <name>dfs.namenode.rpc-address.harbinger-test.nn2</name>
+        <value>nn1.hadoop.test.harbinger.data.m.com:8020</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.harbinger-test.nn2</name>
+        <value>nn2.hadoop.test.harbinger.data.m.com:50070</value>
+    </property>
+
+
+
+    <!-- ================ Performance Configuration ================  -->
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>
+            /data1/harbinger-test-hadoop/hdfs_data,
+            /data2/harbinger-test-hadoop/hdfs_data,
+            /data3/harbinger-test-hadoop/hdfs_data,
+            /data4/harbinger-test-hadoop/hdfs_data,
+            /data5/harbinger-test-hadoop/hdfs_data
+        </value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir.perm</name>
+        <value>700</value>
+    </property>
+
+    <property>
+        <name>dfs.blocksize</name>
+        <value>134217728</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.balance.bandwidthPerSec</name>
+        <value>10485760</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.du.reserved</name>
+        <value>214748364800</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.failed.volumes.tolerated</name>
+        <value>2</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+
+</configuration>

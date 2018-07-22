@@ -6,6 +6,7 @@
 .idea/sven.iml
 .idea/workspace.xml
 kunkka-sven.iml
-src/
+
 sven.iml
 target/
+.idea/libraries/

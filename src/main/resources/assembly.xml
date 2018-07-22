@@ -1,0 +1,131 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>${env}</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <includes>
+                <include>readme*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+                <include>CRON.list</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/resources/conf/${env}/hadoop/</directory>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>664</fileMode>
+            <excludes>
+                <exclude>*.sh</exclude>
+            </excludes>
+        </fileSet>
+
+
+        <fileSet>
+            <directory>src/main/resources/conf/python/</directory>
+            <outputDirectory>python</outputDirectory>
+            <fileMode>664</fileMode>
+            <excludes>
+                <exclude>*.sh</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/resources/sbin/</directory>
+            <outputDirectory>sbin</outputDirectory>
+            <fileMode>777</fileMode>
+        </fileSet>
+
+
+
+        <fileSet>
+            <directory>src/main/resources/conf/${env}/spark/</directory>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>664</fileMode>
+        </fileSet>
+
+
+        <fileSet>
+            <directory>src/main/resources/bin/hadoop</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>777</fileMode>
+        </fileSet>
+
+
+        <fileSet>
+            <directory>src/main/resources/bin/spark</directory>
+            <outputDirectory>bin/spark</outputDirectory>
+            <fileMode>777</fileMode>
+        </fileSet>
+
+
+    </fileSets>
+
+    <files>
+        <file>
+            <source>src/main/resources/bin/sven.sh</source>
+            <outputDirectory>./bin/</outputDirectory>
+            <destName>sven.sh</destName>
+            <fileMode>777</fileMode>
+        </file>
+        <file>
+            <source>src/main/resources/bin/sven-harbinger2.sh</source>
+            <outputDirectory>./bin/</outputDirectory>
+            <destName>sven-harbinger2.sh</destName>
+            <fileMode>777</fileMode>
+        </file>
+        <file>
+            <source>src/main/resources/bin/sven-test.sh</source>
+            <outputDirectory>./bin/</outputDirectory>
+            <destName>sven-test.sh</destName>
+            <fileMode>777</fileMode>
+        </file>
+        <file>
+            <source>src/main/resources/bin/env.sh</source>
+            <outputDirectory>./bin/</outputDirectory>
+            <destName>env.sh</destName>
+            <fileMode>777</fileMode>
+        </file>
+        <file>
+            <source>src/main/resources/VERSION</source>
+            <outputDirectory>./conf/</outputDirectory>
+            <destName>VERSION-${project.version}</destName>
+        </file>
+        <file>
+            <source>src/main/resources/conf/logo</source>
+            <outputDirectory>./conf/</outputDirectory>
+            <destName>logo</destName>
+        </file>
+        <file>
+        <source>src/main/resources/conf/harbinger2/sven.conf</source>
+        <outputDirectory>./conf/harbinger2/</outputDirectory>
+        <destName>sven.conf</destName>
+         </file>
+
+        <file>
+            <source>src/main/resources/conf/prd/sven.conf</source>
+            <outputDirectory>./conf/prd/</outputDirectory>
+            <destName>sven.conf</destName>
+        </file>
+        <file>
+            <source>src/main/resources/conf/test/sven.conf</source>
+            <outputDirectory>./conf/test/</outputDirectory>
+            <destName>sven.conf</destName>
+        </file>
+    </files>
+
+
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>jars</outputDirectory>
+            <fileMode>777</fileMode>
+        </dependencySet>
+    </dependencySets>
+</assembly>

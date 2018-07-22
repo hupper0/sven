@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+MAIN_CLASS="com.local.hupper.sven.HadoopFileSystem"
+source /etc/profile
+export LANG=en_US.UTF-8
+
+PROJ_HOME=/www/kunkka-sven
+CONF_DIR="${PROJ_HOME}/conf"
+PROJ_LIB=".:${PROJ_HOME}/conf:${PROJ_HOME}/jars/*"
+
+
+#Memory
+export JAVA_OPTS="$JAVA_OPTS -server -Xms1G -Xmx1G -XX:PermSize=256M -XX:MaxPermSize=1G -Xss256k -XX:SurvivorRatio=8"
+
+#/usr/java/jdk1.7.0_80/bin/java -classpath .:/www/harbinger-hadoop/etc/hadoop:/home/lhp/spark-submit/lib/*:   -Dhadoop.root.logger=INFO,console  -Dhadoop.security.logger=INFO,NullAppender   org.apache.hadoop.fs.FsShell -ls /
+
+if [ ! -d ${LOG_DIR} ]; then
+    mkdir -p ${LOG_DIR}
+fi
+
+ echo -ne "\033[0;32m"
+    cat ${CONF_DIR}/logo
+    echo -ne "\033[m";
+
+if [ "$COMMAND" = "fs" ] ; then
+    MAIN_CLASS="com.local.hupper.sven.HadoopFileSystem"
+elif [ "$COMMAND" = "version" ] ; then
+    MAIN_CLASS="org.apache.hadoop.util.VersionInfo"
+fi
+java -classpath "${PROJ_LIB}" ${JAVA_OPTS} \
+         -Dhadoop.root.logger=INFO,console  -Dhadoop.security.logger=INFO,NullAppender \
+         ${MAIN_CLASS}  "$@"
+#else
+#    java -classpath "${PROJ_LIB}" ${JAVA_OPTS} \
+#         -Dproject.home=${PROJ_HOME} -Dlogback.configurationFile=${CONF_DIR}/logback.xml -Dfile.encoding=UTF-8 \
+#         ${MAIN_CLASS} "$@"
+#fi

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+MAIN_CLASS="com.local.hupper.sven.SubmitJobToSpark "
+source /etc/profile
+source /www/kunkka-sven/bin/env.sh
+export LANG=en_US.UTF-8
+export HADOOP_CONF_DIR=/www/kunkka-sven/conf
+
+
+PROJ_HOME=/www/kunkka-sven
+CONF_DIR="${PROJ_HOME}/conf"
+PROJ_LIB=".:${PROJ_HOME}/conf:${PROJ_HOME}/jars/*"
+
+
+
+#Memory
+export JAVA_OPTS="$JAVA_OPTS -server -Xms1G -Xmx1G -XX:PermSize=256M -XX:MaxPermSize=1G -Xss256k -XX:SurvivorRatio=8"
+
+#/usr/java/jdk1.7.0_80/bin/java -classpath .:/www/harbinger-hadoop/etc/hadoop:/home/lhp/spark-submit/lib/*:   -Dhadoop.root.logger=INFO,console  -Dhadoop.security.logger=INFO,NullAppender   org.apache.hadoop.fs.FsShell -ls /
+
+if [ ! -d ${LOG_DIR} ]; then
+    mkdir -p ${LOG_DIR}
+fi
+
+ echo -ne "\033[0;32m"
+    cat ${CONF_DIR}/logo
+    echo -ne "\033[m";
+
+
+java -classpath "${PROJ_LIB}" ${JAVA_OPTS} \
+         -Dhadoop.root.logger=INFO,console  -Dhadoop.security.logger=INFO,NullAppender \
+         ${MAIN_CLASS}  "$@"
+
+
+
+
+
+
+
