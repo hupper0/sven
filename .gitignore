@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/compiler.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/sven.iml
+.idea/workspace.xml
+kunkka-sven.iml
+src/
+sven.iml
+target/
