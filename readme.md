@@ -1,7 +1,7 @@
 
-## sven：是一个提交spark任务的客户端工具，且可以管理hdfs文件数据，具体用法如下：
-### 0、请求转发逻辑参考：https://github.com/cloudera/livy
-### 1、sven --file xxxx ： 表示提交spark 任务，请求中间会经过livy服务器 
+### sven：是一个提交spark任务的客户端工具，且可以管理hdfs文件数据，具体用法如下：
+#### 请求转发逻辑参考：https://github.com/cloudera/livy
+#### 1、sven --file xxxx ： 表示提交spark 任务，请求中间会经过livy服务器 
 
 ``` 
 sven 
@@ -68,7 +68,7 @@ sven --file /www/meitu-hot-recall/tools/spark-cf.jar \
     --args --batch_date $batch_date
  ```
 
-### 2、sven fs xxx   表示管理hdfs数据
+#### 2、sven fs xxx   表示管理hdfs数据
 ```
 usage: sven [arguments] [options]
  arguments
@@ -94,7 +94,7 @@ example:  sven fs -get /package/server.log /home/lhp/a.log
 *	sven fs [options] 表示管理的是hdfs文件
 *	sven --file(required) [options] 表示提交spark 作业
 ```
-### 3、sven 自从3.4.0版本后，新增俩个命令 sven-hadoop 和sven-spark
+#### 3、sven 自从3.4.0版本后，新增俩个命令 sven-hadoop 和sven-spark
     
      
        1、sven-hadoop fs xxxx : 表示管理hdfs数据文件，语法和 hadoop fs xxx一样；
